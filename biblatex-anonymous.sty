@@ -13,7 +13,7 @@
 % The Current Maintainer of this work is Maïeul Rouquette
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{biblatex-anonymous}[2014/06/17 v1.0.0 Manage anonymous works with biblatex]
-
+\RequirePackage{xpatch}
 % 1. Sorting
 
 \DeclareSortingScheme{anonymous}{
@@ -46,5 +46,8 @@
 
 \DeclareLabelname[book, bookinbook, bookinarticle,mvbook,inbook]{\field{author}}
 
+% Book : print only the author name
+
+\xpatchbibdriver{book}{\usebibmacro{author/editor+others/translator+others}}{\usebibmacro{author}}{}{}
 
 \endinput
