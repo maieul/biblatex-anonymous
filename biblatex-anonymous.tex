@@ -3,7 +3,7 @@
 \usepackage{fontspec}
 \usepackage[mono=false]{libertine}
 \usepackage{microtype}
-\usepackage[american]{babel}
+\usepackage[main=english,french,latin]{babel}
 \usepackage[strict]{csquotes}
 \setmonofont[Scale=MatchLowercase]{DejaVu Sans Mono}
 \usepackage{shortvrb}
@@ -30,7 +30,43 @@
 \printtitlepage
 \tableofcontents
 
+\section{Introduction}
 
+In some scholar fields, like history or philology, we have to work with anonymous work. 
+
+This package provides facility to manage them with \biblatex, with citation and bibliography style of the \namebibstyle{verbose} family.
+
+\section{What does the package do?}
+
+This package does those things:
+
+\begin{enumerate}
+	\item Providing a sorting scheme to put all anonymous work at the begining of a bibliography. This sorting scheme is derivated from \verb+nyt+ scheme.
+	\item For \bibtype{book}, \bibtype{bookinbook}, \bibtype{bookinarticle}, \bibtype{mvbook}, \bibtype{inbook}:
+		\begin{itemize}
+			\item Changing label name to author only, never editor.
+			\item For French, changing \enquote{\selectlanguage{french}dir.} by \enquote{\selectlanguage{french}éd.}
+	\item For \bibtype{book}, printing only the author name  before the title, and never the editor, even if the book is anonymous. If you need to print an editor name when a book has no author, you should use \bibtype{collection} or \bibtype{proceedings} Entry Type.
+		\end{itemize}
+\end{enumerate}
+
+\section{Using the package}
+
+\subsection{Loading}
+You must load the package after \biblatex package:
+\begin{minted}{latex}
+\usepackage[…]{biblatex}
+\usepackage{biblatex-anonymous}
+\end{minted}
+
+\subsection{Sorting with anonymous scheme}
+
+If you want your bibliographies to have all anonymous works at the begining, you can pass option \verb+sorting=anonymous+:
+
+\begin{itemize}
+	\item To \biblatex package, to apply it to all bibliographies.
+	\item To \cs{printbibliography} command, to apply it to a single bibliography.
+\end{itemize}
 \section{Credits}
 
 This package was created for Maïeul Rouquette's phd dissertation\footnote{\url{http://apocryphes.hypothese.org}.} in 2014. It is licensed on the \emph{\LaTeX\ Project Public License}\footnote{\url{http://latex-project.org/lppl/lppl-1-3c.html}.}. 
