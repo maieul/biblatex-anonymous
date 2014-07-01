@@ -51,4 +51,16 @@
 
 \xpatchbibdriver{book}{\usebibmacro{author/editor+others/translator+others}}{\usebibmacro{author}}{}{}
 
+% 4. French: directeur devient éditeur
+
+\DefineBibliographyStrings{french}{%
+	  byeditor = \ifboolexpr{(%
+          test {\iffieldequalstr{entrytype}{bookinbook}}%
+          or test {\iffieldequalstr{entrytype}{inbook}}%
+          or test {\iffieldequalstr{entrytype}{book}}%
+          or test {\iffieldequalstr{entrytype}{mvbook}}%
+          or test {\iffieldequalstr{entrytype}{bookinarticle}}%
+                        )}%
+                {{éd\adddot}}{{dir\adddotspace}},
+}
 \endinput
