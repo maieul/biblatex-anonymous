@@ -12,7 +12,7 @@
 % 
 % The Current Maintainer of this work is Maïeul Rouquette
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{biblatex-anonymous}[2014/06/17 v1.0.0 Manage anonymous works with biblatex]
+\ProvidesPackage{biblatex-anonymous}[2014/10/20 v1.0.1 Manage anonymous works with biblatex]
 \RequirePackage{xpatch}
 % 1. Sorting
 
@@ -50,6 +50,15 @@
 %3. Book : print only the author name
 
 \xpatchbibdriver{book}{\usebibmacro{author/editor+others/translator+others}}{\usebibmacro{author}}{}{}
+
+%%3.1 And so, prevent the spurious space in case of \cites command
+
+\newbibmacro{setunitlabelnamepunct}{\ifnameundef{author}{}{\setunit{\labelnamepunct}\newblock}}
+\xpatchbibdriver{book}%
+  {\setunit{\labelnamepunct}\newblock}%
+  {\usebibmacro{setunitlabelnamepunct}}%
+  {}%
+  {}%
 
 % 4. French: directeur devient éditeur
 
