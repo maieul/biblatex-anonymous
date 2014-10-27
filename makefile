@@ -5,7 +5,7 @@ dist: biblatex-anonymous.pdf
 	@$(RM) ../biblatex-anonymous.zip
 	rm -rf biblatex-anonymous
 	mkdir biblatex-anonymous	
-	cp $(FILES) biblatex-anonymous
+	ln $(FILES) biblatex-anonymous
 	zip -r ../biblatex-anonymous.zip  biblatex-anonymous
   
 clean:
