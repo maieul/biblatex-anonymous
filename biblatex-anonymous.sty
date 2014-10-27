@@ -12,9 +12,12 @@
 % 
 % The Current Maintainer of this work is Maïeul Rouquette
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{biblatex-anonymous}[2014/10/27 v1.0.1 Manage anonymous works with biblatex]
-\RequirePackage{xpatch}
-% 1. Sorting
+\ProvidesPackage{biblatex-anonymous}[2014/10/27 v2.0.0 Manage anonymous works with biblatex]
+
+%1. Just execute bibliographic option for some entries type
+\ExecuteBibliographyOptions[book, bookinbook, bookinarticle, bookinincollection, mvbook,inbook]{useeditor=false,usetranslator=false}
+
+% 2. Sorting,  kept for backward compatibility
 
 \DeclareSortingScheme{anonymous}{
   \sort{
@@ -43,33 +46,10 @@
   }
 }
 
-%2. Labelname
-
-\DeclareLabelname[book, bookinbook, bookinarticle,mvbook,inbook]{\field{author}}
-
-%3. Book : print only the author name
-
-\xpatchbibdriver{book}{\usebibmacro{author/editor+others/translator+others}}{\usebibmacro{author}}{}{}
-
 %%3.1 And so, prevent the spurious space in case of \cites command
 
-\newbibmacro{setunitlabelnamepunct}{\ifnameundef{author}{}{\setunit{\labelnamepunct}\newblock}}
-\xpatchbibdriver{book}%
-  {\setunit{\labelnamepunct}\newblock}%
-  {\usebibmacro{setunitlabelnamepunct}}%
-  {}%
-  {}%
-
-% 4. French: directeur devient éditeur
-
 \DefineBibliographyStrings{french}{%
-	  byeditor = \ifboolexpr{(%
-          test {\iffieldequalstr{entrytype}{bookinbook}}%
-          or test {\iffieldequalstr{entrytype}{inbook}}%
-          or test {\iffieldequalstr{entrytype}{book}}%
-          or test {\iffieldequalstr{entrytype}{mvbook}}%
-          or test {\iffieldequalstr{entrytype}{bookinarticle}}%
-                        )}%
-                {{éd\adddot}}{{dir\adddotspace}},
+	  byeditor = %
+                {\ifuseeditor{dir\adddotspace}{éd\adddot}},
 }
 \endinput
