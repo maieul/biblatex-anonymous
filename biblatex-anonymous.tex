@@ -38,16 +38,12 @@ This package provides facility to manage them with \biblatex, with citation and 
 
 \section{What does the package do?}
 
-This package does those things:
-
+This package does those things for  \bibtype{book}, \bibtype{bookinbook}, \bibtype{bookinarticle}, \bibtype{bookinincollection}, \bibtype{mvbook}, \bibtype{inbook}:
 \begin{enumerate}
-	\item Providing a sorting scheme to put all anonymous work at the begining of a bibliography. This sorting scheme is derivated from \verb+nyt+ scheme.
-	\item For \bibtype{book}, \bibtype{bookinbook}, \bibtype{bookinarticle}, \bibtype{mvbook}, \bibtype{inbook}:
-		\begin{itemize}
-			\item Changing label name to author only, never editor.
-			\item For French, changing \enquote{\selectlanguage{french}dir.} by \enquote{\selectlanguage{french}éd.}
-	\end{itemize}
-	\item For \bibtype{book}, printing only the author name  before the title, and never the editor, even if the book is anonymous. If you need to print an editor name when a book has no author, you should use \bibtype{collection} or \bibtype{proceedings} Entry Type.
+	
+	\item Changing label name to author only, never editor.
+	\item For French, changing \enquote{\selectlanguage{french}dir.} by \enquote{\selectlanguage{french}éd.}.
+	\item Printing only the author name  before the title, and never the editor, even if the book is anonymous.
 		
 \end{enumerate}
 
@@ -60,14 +56,14 @@ You must load the package after \biblatex package:
 \usepackage{biblatex-anonymous}
 \end{minted}
 
-\subsection{Sorting with anonymous scheme}
+\subsection{Sorting scheme}
 
-If you want your bibliographies to have all anonymous works at the begining, you can pass option \verb+sorting=anonymous+:
+With this package, all anonymous works are printed before the works with author. The \verb+anonymous+ sorting scheme is kept only for backward compatibility. 
 
-\begin{itemize}
-	\item To \biblatex package, to apply it to all bibliographies.
-	\item To \cs{printbibliography} command, to apply it to a single bibliography.
-\end{itemize}
+\subsection{Making exceptions}
+
+If you want to use the \bibfield{editor} or \bibfield{translator} for a entry concerned by this package (e.g. \bibtyp{book}, \bibtype{bookinbook} etc.), you can use the \verb+useeditor=true+ or \verb+usetranslator=true+ 
+option in the \bibfield{options} field. However, in many case, such entry should be a \bibtype{proceedings} or \bibtype{collection}. 
 \section{Credits}
 
 This package was created for Maïeul Rouquette's phd dissertation\footnote{\url{http://apocryphes.hypothese.org}.} in 2014. It is licensed on the \emph{\LaTeX\ Project Public License}\footnote{\url{http://latex-project.org/lppl/lppl-1-3c.html}.}. 
