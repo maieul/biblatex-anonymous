@@ -20,8 +20,8 @@
 	subtitle={},
 	email={maieul <at> maieul <dot> net},
 	author={Maïeul Rouquette},
-	revision={2.1.0},
-	date={30/10/2014},
+	revision={2.2.0},
+	date={05/06/2016},
 	url={https://github.com/maieul/biblatex-anonymous}}
 
 \begin{document}
@@ -70,6 +70,25 @@ If you want your bibliographies to have all anonymous works at the begining, you
 
 If you want to use the \bibfield{editor} or \bibfield{translator} for a entry concerned by this package (e.g. \bibtype{book}, \bibtype{bookinbook} etc.), you can use the \verb+useeditor=true+ or \verb+usetranslator=true+ 
 option in the \bibfield{options} field. However, in many case, such entry should be a \bibtype{proceedings} or \bibtype{collection}. 
+
+\subsection{Anonymous work edited on not anonymous books}\label{noinherit}
+
+Sometime, an anonymous \bibtype{bookinbook} is printed in a NOT anonymous work.
+If you use cross-referencing system, you would like to NOT inherit the \bibfield{name} from the main entry in the subentry.
+
+\textbf{From \biblatex~3.4.0}, you can use entry option \opt{noinherit=noauthor} as in the following example:
+
+\begin{minted}{latex}
+@book{mainentry,
+	Author = {Name},
+	…
+}
+@book{subentry,
+  Crossref = {mainentry},
+	Options = {noinherit=author},
+	…
+}
+\end{minted}
 \section{Credits}
 
 This package was created for Maïeul Rouquette's phd dissertation\footnote{\url{http://apocryphes.hypothese.org}.} in 2014. It is licensed on the \emph{\LaTeX\ Project Public License}\footnote{\url{http://latex-project.org/lppl/lppl-1-3c.html}.}. 
@@ -82,6 +101,10 @@ All issues can be submitted, in French or English, in the GitHub issues page\foo
 
 \begin{changelog}
 
+\begin{release}{2.2.0}{2015-06-05}
+  \item Takes account of the \bibfield{realeditor} field of the \emph{biblatex-realauthor} package~2.4.0 and later.
+  \item Add tools to prevent inherinting name from main entry \see{noinherit}.
+\end{release}
 
 \begin{release}{2.1.0}{2014-10-30}
 \item Coming back, and improve, the \verb+anonymous+ sorting scheme.

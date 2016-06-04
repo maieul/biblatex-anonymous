@@ -12,10 +12,10 @@
 % 
 % The Current Maintainer of this work is Maïeul Rouquette
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{biblatex-anonymous}[2014/10/30 v2.1.0 Manage anonymous works with biblatex]
+\ProvidesPackage{biblatex-anonymous}[2016/06/05 v2.2.0 Manage anonymous works with biblatex]
 
 %1. Just execute bibliographic option for some entries type
-\ExecuteBibliographyOptions[book, bookinbook, bookinarticle, bookinincollection, mvbook,inbook]{useeditor=false,usetranslator=false}
+\ExecuteBibliographyOptions[book, bookinbook, bookinarticle, bookinincollection, mvbook,inbook]{useeditor=false,usetranslator=false,userealeditor=false}
 
 % 2. Sorting
 
@@ -48,7 +48,17 @@
 }
 
 %%3.1 And so, prevent the spurious space in case of \cites command
+%%% Not for now, waiting from https://github.com/plk/biblatex/issues/285
 
+%4. Tools to prevent inhering author field (require biblatex > 3.4)
+\ifdef\DeclareDatafieldSet
+  
+  \DeclareDatafieldSet{author}{
+    \member[field=author]
+  }
+  
+\fi
+%5. Language specific setting
 \DefineBibliographyStrings{french}{%
 	  byeditor = %
                 {\ifuseeditor{dir\adddotspace}{éd\adddot}},
