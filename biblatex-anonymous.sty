@@ -48,7 +48,17 @@
 }
 
 %%3.1 And so, prevent the spurious space in case of \cites command
+%%% Not for now, waiting from https://github.com/plk/biblatex/issues/285
 
+%4. Tools to prevent inhering author field (require biblatex > 3.4)
+\ifdef\DeclareDatafieldSet
+  
+  \DeclareDatafieldSet{author}{
+    \member[field=author]
+  }
+  
+\fi
+%5. Language specific setting
 \DefineBibliographyStrings{french}{%
 	  byeditor = %
                 {\ifuseeditor{dir\adddotspace}{éd\adddot}},
