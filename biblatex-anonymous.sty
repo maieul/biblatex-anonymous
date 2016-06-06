@@ -12,7 +12,7 @@
 % 
 % The Current Maintainer of this work is Maïeul Rouquette
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{biblatex-anonymous}[2016/06/05 v2.2.0 Manage anonymous works with biblatex]
+\ProvidesPackage{biblatex-anonymous}[2016/06/06 v2.2.1 Manage anonymous works with biblatex]
 
 %1. Just execute bibliographic option for some entries type
 \ExecuteBibliographyOptions[book, bookinbook, bookinarticle, bookinincollection, mvbook,inbook]{useeditor=false,usetranslator=false,userealeditor=false}
@@ -51,7 +51,7 @@
 %%% Not for now, waiting from https://github.com/plk/biblatex/issues/285
 
 %4. Tools to prevent inhering author field (require biblatex > 3.4)
-\ifdef\DeclareDatafieldSet
+\ifdefined\DeclareDatafieldSet
   
   \DeclareDatafieldSet{author}{
     \member[field=author]
