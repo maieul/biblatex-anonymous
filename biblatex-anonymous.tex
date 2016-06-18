@@ -46,7 +46,7 @@ This package does those things for  \bibtype{book}, \bibtype{bookinbook}, \bibty
 	\item Providing a sorting scheme to put all anonymous work at the begining of a bibliography. This sorting scheme is derivated from \verb+nyt+ scheme.
 	\item For French, changing \enquote{\selectlanguage{french}dir.} by \enquote{\selectlanguage{french}éd.}.
 	\item Printing only the author name  before the title, and never the editor, even if the book is anonymous.
- 	\item Fixing \biblatex\ bug with  \expandafter\cs\expandafter{\meta{xx}cites} command when using anonymous works.\footnote{\url{https://github.com/plk/biblatex/issues/285}.}
+ 	\item Fixing \biblatex\ bug with  \expandafter\cs\expandafter{\prm{xx}cites} command when using anonymous works.\footnote{\url{https://github.com/plk/biblatex/issues/285}.}
 		
 \end{enumerate}
 
@@ -103,7 +103,7 @@ All issues can be submitted, in French or English, in the GitHub issues page\foo
 \begin{changelog}
 
 \begin{release}{2.2.2}{2015-06-18}
-  \item Fix \biblatex\ bug with  \expandafter\cs\expandafter{\meta{xx}cites} command when using anonymous works.
+  \item Fix \biblatex\ bug with  \expandafter\cs\expandafter{\prm{xx}cites} command when using anonymous works.
   \item Fix bug added by version 2.0.0 when not using the \emph{biblatex-realauthor} package.
  \end{release}
 \begin{release}{2.2.1}{2015-06-06}
