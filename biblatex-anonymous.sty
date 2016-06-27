@@ -12,7 +12,7 @@
 % 
 % The Current Maintainer of this work is Maïeul Rouquette
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{biblatex-anonymous}[2016/06/21 v2.2.2a Manage anonymous works with biblatex]
+\ProvidesPackage{biblatex-anonymous}[2016/06/27 v2.2.3 Manage anonymous works with biblatex]
 
 %1. Just execute bibliographic option for some entries type
 \ExecuteBibliographyOptions[book, bookinbook, bookinarticle, bookinincollection, mvbook,inbook]{useeditor=false,usetranslator=false}
@@ -51,7 +51,7 @@
 
 %%3.1 And so, prevent the spurious space in case of \cites command
 %%% Hack suggested on https://github.com/plk/biblatex/issues/285#issuecomment-226918950
-\AtEveryCitekey{\blx@initunit}
+\AtEveryCitekey{\iffieldundef{prenote}{\blx@initunit}{}}
 
 %4. Tools to prevent inhering author field (require biblatex > 3.4)
 \ifdefined\DeclareDatafieldSet
