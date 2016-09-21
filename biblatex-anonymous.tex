@@ -16,12 +16,12 @@
 \newcommand{\namebibstyle}[1]{\texttt{#1}}
 % Meta-datas
 \titlepage{%
-	title={Managing anonymous work with biblatex},
+	title={Managing anonymous works with biblatex},
 	subtitle={},
 	email={maieul <at> maieul <dot> net},
 	author={Maïeul Rouquette},
-	revision={2.3.0},
-	date={08/09/2016},
+	revision={2.4.0},
+	date={22/09/2016},
 	url={https://github.com/maieul/biblatex-anonymous}}
 
 \begin{document}
@@ -32,7 +32,7 @@
 
 \section{Introduction}
 
-In some scholar fields, like history or philology, we have to work with anonymous work. 
+In some scholar fields, like history or philology, we have to work with anonymous works. 
 
 This package provides facility to manage them with \biblatex, with citation and bibliography style of the \namebibstyle{verbose} family.
 
@@ -43,7 +43,7 @@ This package does those things for  \bibtype{book}, \bibtype{bookinbook}, \bibty
 	
 
 	\item Changing label name to author only, never editor.
-	\item Providing a sorting scheme to put all anonymous work at the begining of a bibliography. This sorting scheme is derivated from \verb+nyt+ scheme.
+	\item Providing a sorting scheme to put all anonymous works at the beginning of a bibliography. This sorting scheme is derivated from \verb+nyt+ scheme.
 	\item For French, changing \enquote{\selectlanguage{french}dir.} by \enquote{\selectlanguage{french}éd.}.
 	\item Printing only the author name  before the title, and never the editor, even if the book is anonymous.
  	\item Fixing \biblatex\ bug with  \expandafter\cs\expandafter{\prm{xx}cites} command when using anonymous works.\footnote{\url{https://github.com/plk/biblatex/issues/285}.}
@@ -72,9 +72,9 @@ If you want your bibliographies to have all anonymous works at the begining, you
 If you want to use the \bibfield{editor} or \bibfield{translator} for a entry concerned by this package (e.g. \bibtype{book}, \bibtype{bookinbook} etc.), you can use the \verb+useeditor=true+ or \verb+usetranslator=true+ 
 option in the \bibfield{options} field. However, in many case, such entry should be a \bibtype{proceedings} or \bibtype{collection}. 
 
-\subsection{Anonymous work edited on not anonymous books}\label{noinherit}
+\subsection{Anonymous works edited on not anonymous books}\label{noinherit}
 
-Sometime, an anonymous \bibtype{bookinbook} is printed in a NOT anonymous work.
+Sometime, an anonymous \bibtype{bookinbook} is printed in a NOT anonymous book.
 If you use cross-referencing system, you would like to NOT inherit the \bibfield{name} from the main entry in the subentry.
 
 \textbf{From \biblatex~3.4.0}, you can use entry option \opt{noinherit=author} as in the following example:
@@ -101,6 +101,10 @@ All issues can be submitted, in French or English, in the GitHub issues page\foo
 \section{Change history}
 
 \begin{changelog}
+
+\begin{release}{2.4.0}{2016-09-22}
+  \item Also for anonymous \bibtype{inreference}, \bibtype{bookinreference} and \bibtype{bookininreference}.
+\end{release}
 
 \begin{release}{2.3.0}{2016-09-08}
   \item Add compatibility with \bibtype{bookininbook} and \bibtype{bookininarticle} of \emph{biblatex-bookinbook} package.
