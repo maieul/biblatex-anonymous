@@ -12,7 +12,7 @@
 % 
 % The Current Maintainer of this work is Maïeul Rouquette
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{biblatex-anonymous}[2016/09/25 v2.4.0 Manage anonymous works with biblatex]
+\ProvidesPackage{biblatex-anonymous}[2016/10/23 v2.5.0 Manage anonymous works with biblatex]
 
 %1. Just execute bibliographic option for some entries type
 \ExecuteBibliographyOptions[%
@@ -47,13 +47,7 @@
 \fi
 % 2. Sorting
 
-\DeclareSortingScheme{anonymous}{
-  \sort{
-    \field{presort}
-  }
-  \sort[final]{
-    \field{sortkey}
-  }
+\def\bbx@anonymous@sorting{
   \sort{
     \field{sortname}
     \field{author}
@@ -73,6 +67,31 @@
     \field[padside=left,padwidth=4,padchar=0]{volume}
     \literal{0000}
   }
+}
+\DeclareSortingScheme{anonymous}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+ \bbx@anonymous@sorting
+}
+
+\AtEndPreamble{
+  \ifundef{\bbx@manuscripts@sorting}{}%
+    {
+    \DeclareSortingScheme{anonymous+manuscripts}{
+      \sort{
+        \field{presort}
+      }
+      \sort[final]{
+        \field{sortkey}
+      }   
+      \bbx@anonymous@sorting
+      \bbx@manuscripts@sorting
+      }
+    }
 }
 
 %%3.1 And so, prevent the spurious space in case of \cites command
