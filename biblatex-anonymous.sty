@@ -12,7 +12,7 @@
 % 
 % The Current Maintainer of this work is Maïeul Rouquette
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{biblatex-anonymous}[2016/10/23 v2.5.0 Manage anonymous works with biblatex]
+\ProvidesPackage{biblatex-anonymous}[2017/01/24 v2.6.0 Manage anonymous works with biblatex]
 
 %1. Just execute bibliographic option for some entries type
 \ExecuteBibliographyOptions[%
@@ -44,6 +44,22 @@
   bookinreference,%
   bookininreference%
   ]{userealeditor=false}
+\fi
+\ifdefined\etb@tgl@blx@usebookineditor
+ \ExecuteBibliographyOptions[%
+  book,%
+  bookinbook,% 
+  bookinarticle,% 
+  bookincollection,%
+  bookinincollection,%
+  mvbook,%
+  inbook,%
+  bookininbook,%
+  bookininarticle,%
+  inreference,%
+  bookinreference,%
+  bookininreference%
+  ]{usebookineditor=false,useineditor=false,usemaineditor=false}
 \fi
 % 2. Sorting
 
