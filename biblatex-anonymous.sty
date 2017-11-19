@@ -12,7 +12,7 @@
 % 
 % The Current Maintainer of this work is Maïeul Rouquette
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{biblatex-anonymous}[2017/01/24 v2.6.0 Manage anonymous works with biblatex]
+\ProvidesPackage{biblatex-anonymous}[2017/11/19 v2.6.1 Manage anonymous works with biblatex]
 
 %1. Just execute bibliographic option for some entries type
 \ExecuteBibliographyOptions[%
@@ -62,6 +62,9 @@
   ]{usebookineditor=false,useineditor=false,usemaineditor=false}
 \fi
 % 2. Sorting
+\ifdef{\DeclareSortingTemplate}%
+  {}%
+  {\let\DeclareSortingTemplate\DeclareSortingScheme}%
 
 \def\bbx@anonymous@sorting{
   \sort{
@@ -84,7 +87,7 @@
     \literal{0000}
   }
 }
-\DeclareSortingScheme{anonymous}{
+\DeclareSortingTemplate{anonymous}{
   \sort{
     \field{presort}
   }
@@ -97,7 +100,7 @@
 \AtEndPreamble{
   \ifundef{\bbx@manuscripts@sorting}{}%
     {
-    \DeclareSortingScheme{anonymous+manuscripts}{
+    \DeclareSortingTemplate{anonymous+manuscripts}{
       \sort{
         \field{presort}
       }
