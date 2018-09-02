@@ -12,7 +12,7 @@
 % 
 % The Current Maintainer of this work is Maïeul Rouquette
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{biblatex-anonymous}[2017/11/19 v2.6.1 Manage anonymous works with biblatex]
+\ProvidesPackage{biblatex-anonymous}[2018/09/02 v2.6.2 Manage anonymous works with biblatex]
 
 %1. Just execute bibliographic option for some entries type
 \ExecuteBibliographyOptions[%
@@ -97,21 +97,19 @@
  \bbx@anonymous@sorting
 }
 
-\AtEndPreamble{
-  \ifundef{\bbx@manuscripts@sorting}{}%
-    {
-    \DeclareSortingTemplate{anonymous+manuscripts}{
-      \sort{
-        \field{presort}
-      }
-      \sort[final]{
-        \field{sortkey}
-      }   
-      \bbx@anonymous@sorting
-      \bbx@manuscripts@sorting
-      }
+\ifundef{\bbx@manuscripts@sorting}{}%
+  {
+  \DeclareSortingTemplate{anonymous+manuscripts}{
+    \sort{
+      \field{presort}
     }
-}
+    \sort[final]{
+      \field{sortkey}
+    }   
+    \bbx@anonymous@sorting
+    \bbx@manuscripts@sorting
+    }
+  }
 
 %%3.1 And so, prevent the spurious space in case of \cites command
 %%% Hack suggested on https://github.com/plk/biblatex/issues/285#issuecomment-226918950
